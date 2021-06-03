@@ -1,10 +1,13 @@
+import config from 'config';
 import { useState, useEffect } from 'react';
 
 import { Link } from "../../components";
 import { userService } from "../../service";
+import { useConfigContext, ConfigProvider } from "../../context/configContext";
 
 const index = () => {
   const [users, setUsers] = useState(null);
+  const config = useConfigContext(ConfigProvider);
 
   useEffect(() => {
     userService.getAll().then(resp => setUsers(resp));
@@ -23,7 +26,7 @@ const index = () => {
 
   return (
     <div>
-      <h1>Users</h1>
+      <h1>Users for {config.titleApplication}</h1>
       <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
       <table className="table table-striped">
         <thead>

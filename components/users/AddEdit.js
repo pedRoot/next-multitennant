@@ -5,11 +5,13 @@ import * as Yup from "yup";
 
 import { Link } from "..";
 import { userService } from "../../service";
+import { useConfigContext, ConfigProvider } from "../../context/configContext";
 
 const AddEdit = (props) => {
   const user = props?.user;
   const isAddMode = !user;
   const router = useRouter();
+  const config = useConfigContext(ConfigProvider);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -58,7 +60,7 @@ const AddEdit = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>{isAddMode ? 'Add User' : 'Edit User'}</h1>
+      <h1>{isAddMode ? 'Add User' : 'Edit User'} ({config.titleApplication})</h1>
       <div className="form-row">
         <div className="form-group col-5">
           <label>Name</label>
