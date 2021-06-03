@@ -7,6 +7,7 @@ First, run the development server:
 ```bash
 git clone https://github.com/pedRoot/next-multitennant.git
 cd next-multitennant
+(rename env.local for **.env.local**)
 yarn install
 yarn dev
 ```
