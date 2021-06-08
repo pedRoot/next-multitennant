@@ -1,13 +1,13 @@
 import config from 'config';
 import { useState, useEffect } from 'react';
 
-import { Link } from "../../components";
-import { userService } from "../../service";
-import { useConfigContext, ConfigProvider } from "../../context/configContext";
+import { Link } from "components";
+import { userService } from "service";
+import { useConfigContext, ConfigProvider } from "contexts/configContext";
 
 const index = () => {
   const [users, setUsers] = useState(null);
-  const config = useConfigContext(ConfigProvider);
+  const {config} = useConfigContext(ConfigProvider);
 
   useEffect(() => {
     userService.getAll().then(resp => setUsers(resp));

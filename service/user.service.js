@@ -1,32 +1,33 @@
 import { fetchWrapper } from "../helpers";
-import config from "../config";
+import { useConfigContext } from "contexts/configContext";
 
-const baseUrl = config.apiURL;
+const baseUrl = "https://jsonplaceholder.typicode.com/users/";
+
 
 const getAll = () => {
-    return fetchWrapper.get(`${baseUrl}`);
+  return fetchWrapper.get(`${baseUrl}`);
 }
 
 const getById = (id) => {
-    return fetchWrapper.get(`${baseUrl}${id}`);
+  return fetchWrapper.get(`${baseUrl}${id}`);
 }
 
 const create = (params) => {
-    return fetchWrapper.post(`${baseUrl}`, params);
+  return fetchWrapper.post(`${baseUrl}`, params);
 }
 
 const update = (id, params) => {
-    return fetchWrapper.put(`${baseUrl}${id}`, params);
+  return fetchWrapper.put(`${baseUrl}${id}`, params);
 }
 
 const remove = (id) => {
-    return fetchWrapper.delete(`${baseUrl}${id}`);
+  return fetchWrapper.delete(`${baseUrl}${id}`);
 }
 
 export const userService = {
-    getAll,
-    getById,
-    create,
-    update,
-    delete: remove
+  getAll,
+  getById,
+  create,
+  update,
+  delete: remove
 };

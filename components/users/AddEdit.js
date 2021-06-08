@@ -4,14 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
 import { Link } from "..";
-import { userService } from "../../service";
-import { useConfigContext, ConfigProvider } from "../../context/configContext";
+import { userService } from "service";
+import { useConfigContext } from "contexts/configContext";
 
 const AddEdit = (props) => {
   const user = props?.user;
   const isAddMode = !user;
   const router = useRouter();
-  const config = useConfigContext(ConfigProvider);
+  const { config } = useConfigContext();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string()

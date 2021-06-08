@@ -1,9 +1,9 @@
 import Head from "next/head";
 
-import { Nav } from "../components";
+import { Nav } from "components";
 
-import { ConfigProvider } from "../context/configContext";
-import '../styles/globals.css';
+import { ConfigProvider } from "contexts/configContext";
+import 'styles/globals.css';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
@@ -14,12 +14,12 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
 
       <div className="app-container bg-light">
-        <Nav />
-        <div className="container pt-4 pb-4">
-          <ConfigProvider>
+        <ConfigProvider>
+          <Nav />
+          <div className="container pt-4 pb-4">
             <Component {...pageProps} />
-          </ConfigProvider>
-        </div>
+          </div>
+        </ConfigProvider>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { NavLink } from ".";
+import { NavLink, SelectTennant } from "components";
 
 const Nav = () => {
   return (
@@ -7,6 +7,9 @@ const Nav = () => {
         <NavLink href="/" exact className="nav-item nav-link"> Home</NavLink>
         <NavLink href="/users" className="nav-item nav-link"> Users</NavLink>
       </div>
+      {
+        process.env.NODE_ENV == 'development' && <SelectTennant />
+      }
     </nav>
   );
 }
